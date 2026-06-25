@@ -23,5 +23,8 @@ docker-compose.override.yml
 **/logs
 **/build
 
+# Local-only agent-proxy CA bundle (copied into build contexts for local builds)
+**/ca-bundle.crt
+
 #backend
 backend/src/dataAccess/prisma/generated/
