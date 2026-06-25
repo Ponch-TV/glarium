@@ -9,6 +9,22 @@ import glassImg from "../../../assets/img/icon/icon_glass.png";
 import sulfurImg from "../../../assets/img/icon/icon_sulfur.png";
 import goldImg from "../../../assets/img/icon/icon_gold.png";
 
+import unit1Img from "../../../assets/img/unit/1.png";
+import unit2Img from "../../../assets/img/unit/2.png";
+import unit3Img from "../../../assets/img/unit/3.png";
+import unit4Img from "../../../assets/img/unit/4.png";
+import unit5Img from "../../../assets/img/unit/5.png";
+import unit6Img from "../../../assets/img/unit/6.png";
+
+const unitImages: Record<number, string> = {
+    1: unit1Img,
+    2: unit2Img,
+    3: unit3Img,
+    4: unit4Img,
+    5: unit5Img,
+    6: unit6Img,
+};
+
 interface Unit {
     unit_id: number;
     cant: number;
@@ -83,7 +99,8 @@ const Resources: React.FC<ResourcesProps> = ({ movement, close }) => {
                         unit.cant > 0 ? (
                             <div key={i} className="flex flex-col items-center px-2 mb-2">
                                 <div
-                                    className={`my-1 w-6 h-6 bg-[url('/src/assets/img/units/unit_${unit.unit_id}.png')] bg-contain bg-no-repeat`}
+                                    className="my-1 w-6 h-6 bg-contain bg-no-repeat bg-center"
+                                    style={{ backgroundImage: `url(${unitImages[unit.unit_id]})` }}
                                 />
                                 <div>{unit.cant}</div>
                             </div>

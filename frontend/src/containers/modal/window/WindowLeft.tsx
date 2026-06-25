@@ -13,6 +13,7 @@ interface WindowLeftProps {
 }
 
 const WindowLeft: React.FC<WindowLeftProps> = ({ title, close, children }) => {
+    const [closeHover, setCloseHover] = React.useState(false);
     return (
         <div
             className="fixed top-0 z-[100] bg-[beige] w-[720px] mx-auto left-0 right-0 mt-[120px] rounded-lg shadow-lg touch-none"
@@ -23,7 +24,7 @@ const WindowLeft: React.FC<WindowLeftProps> = ({ title, close, children }) => {
             }}
         >
             <div
-                className="flex items-center justify-between select-noneh-[26px] w-full bg-cover bg-no-repeat rounded-t-lg px-3"
+                className="flex items-center justify-between select-none h-[26px] w-full bg-cover bg-no-repeat rounded-t-lg px-3"
                 style={{
                     backgroundImage: `url(${headerImg})`,
                 }}
@@ -33,7 +34,12 @@ const WindowLeft: React.FC<WindowLeftProps> = ({ title, close, children }) => {
                 </div>
                 <button
                     onClick={close}
-                    className={`w-4 h-4 rounded-full ml-2 cursor-pointer bg-[url(${closeImg})] hover:bg-[url(${closeHoverImg})]`}
+                    onMouseEnter={() => setCloseHover(true)}
+                    onMouseLeave={() => setCloseHover(false)}
+                    className="w-4 h-4 rounded-full ml-2 cursor-pointer bg-contain bg-no-repeat"
+                    style={{
+                        backgroundImage: `url(${closeHover ? closeHoverImg : closeImg})`,
+                    }}
                 />
             </div>
 
